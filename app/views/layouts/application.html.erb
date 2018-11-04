@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CursoAPI</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<header>
+  		<nav class="pink">
+  			<div class="nav-wrapper">
+  				<ul class="hide-on-med-and-down">
+  					<li>
+  						<%= link_to "Inicio", "/" %>
+  					</li>
+  					<li>
+  						<% if user_signed_in? %>
+                <li>
+                  <%= link_to "Nueva aplicacion", new_my_app_path %>
+                </li>
+  							<%= link_to "Cerrar sesion", "/logout", method: :delete %> 
+  						<% else %>
+  							<%= link_to "Ingresar", "/auth/google_oauth2" %>
+  						<% end %>
+  					</li>
+  				</ul>
+  			</div>
+  		</nav>
+  	</header>
+  	<div class="container">
+  		<div class="card big-padding">
+  			<%= yield %>	
+  		</div>
+  	</div>
+  </body>
+</html>
